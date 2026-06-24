@@ -5,7 +5,7 @@ With no exact knowledge on the data or the details on the training or evaluation
 
 - First though is we've got an OCR level problem since we've got letter confusion, it seems that we didn't feed it or train it on hard situations meaning our data is not properly augmented by blurring a little the letters or making harder to detect.
 
-- The other thing that comes to mind looking at the problem is "another was fined for a vehicle of a similar make and color but with a slightly different registration number". Maybe the segmentation is leaving some color pixels that the OCR is considering, that is of course if the OCR is operation on colored crops rather than grayscale.
+- The other thing that comes to mind looking at the problem is "another was fined for a vehicle of a similar make and color but with a slightly different registration number". Maybe the segmentation is leaving some color pixels that the OCR is considering, that is of course if the OCR is operating on colored crops rather than grayscale.
 
 ## Q2
 
@@ -13,15 +13,15 @@ With no exact knowledge on the data or the details on the training or evaluation
 
 - Second we need to look at our segmentation work, and make it grayscale, so it becomes resistant to colors, but this really depends on the contrast, black letters and white background? We're in good hands, white letters on red background? The contrast won't be that good. 
 
-- Last thing, it may not be related to the exact model but to the whole pipeline itself, we really need focus on reducing the false positives, missing a faulty car is far permissible than fining an innocent one.
+- Last thing, it may not be related to the exact model but to the whole pipeline itself, we really need focus on reducing the false positives, by setting a strict threshold, missing a faulty car is far permissible than fining an innocent one.
 
 ## Q3
 
-That's quite obvious, the model will run, but not as accurately, we're talking about different dimensions, colors, letter fonts and sometimes even language! I'm thinking here of a base model that has variety, trained on big data from different countries and different situations, let that be our starting point then for each client we fine-tune or use feature extraction. It's illogical that the same model can perform with the same high accuracy in Japan and US at the same time!.
+The model will run, but not as accurately, we're talking about different dimensions, colors, letter fonts and sometimes even language! I'm thinking here of a base model that has variety, trained on big data from different countries and different situations, let that be our starting point then for each client we fine-tune or use feature extraction. It's illogical that the same model can perform with the same high accuracy in Japan and US at the same time!.
 
 ## Q4
 
-I know the core algorithm which is CRNN, I also know EasyOCR and LPRNet. What I see convenient here is LPRNet, it's an up and ready lightweight algorithm made specifically for number plate rcognition, we know our target here so no need to use a general purpose ocr algorithm like easyocr or even go to the length of making our own CRNN.
+I know the core algorithm which is CRNN, I also know EasyOCR and LPRNet. What I see convenient here is LPRNet, it's an up and ready lightweight algorithm made specifically for number plate recognition, we know our target here so no need to use a general purpose ocr algorithm like easyocr or even go to the length of making our own CRNN.
 
 ## Q5
 
